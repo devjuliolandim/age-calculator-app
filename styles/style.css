@@ -18,8 +18,8 @@ body{
 }
 
 main{
-    width: 550px;
-    height: 400px;
+    width: 650px;
+    height: 600px;
     background-color: white;
 
     position: absolute;
@@ -30,15 +30,42 @@ main{
     border-radius: 10px 10px 150px 10px;
 }
 
+ul{
+    list-style: none;
+    display: block;
+}
+
+li{
+    font-size: 5rem;
+    font-style: italic;
+    font-weight: 900;
+    display: block;
+    margin-left: 50px;
+}
+
+span{
+    color: #884BFE;
+}
+
 hr{
     width: 80%;
     display: inline-block;
     margin-left: 20px;
+    margin-bottom: 25px;
+}
+
+svg{
+    cursor: pointer;
+}
+
+svg:hover{
+    color: rgb(159, 1, 159);
+    transition: .5s ease-in-out;
 }
 
 input{
-    width: 100px;
-    height: 40px;
+    width: 120px;
+    height: 60px;
     border-radius: 10px;
     border: 1px solid gray;
     text-align: left;
@@ -56,6 +83,7 @@ input::placeholder{
     padding-right: 15px;
     color: rgb(141, 141, 141);
 }
+
 input:focus::placeholder {
     color: transparent;
 }
@@ -74,4 +102,12 @@ input:focus::placeholder {
     letter-spacing: 1px;
     display: block;
     margin-bottom: 5px;
+}
+
+.send-input{
+    border: 1px solid black;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: inline-block;
 }
