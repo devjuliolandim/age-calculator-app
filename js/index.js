@@ -37,7 +37,7 @@ function areThoseValid(){
     const MONTH = parseInt(document.querySelector("#month").value);
     const YEAR = parseInt(document.querySelector("#year").value);
 
-    var currentYear = new Date().getFullYear;
+    var currentYear = new Date().getFullYear();
     var count = 0;
 
     if(DAY <= 0 || DAY >31 ){
