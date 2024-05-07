@@ -4,8 +4,8 @@ const FILL_MESSAGE = Array.from(document.querySelectorAll('.fill-forget'));
 
 function showResults(){
 
-    if(areThoseFilled()){
-        areThoseValid();
+    if(areThoseFilled() && areThoseValid()){
+        alert('ok');
     }
     
 }
@@ -37,20 +37,28 @@ function areThoseValid(){
     const MONTH = parseInt(document.querySelector("#month").value);
     const YEAR = parseInt(document.querySelector("#year").value);
 
-
     var currentYear = new Date().getFullYear;
+    var count = 0;
 
     if(DAY <= 0 || DAY >31 ){
         addErrorConfigs(0, "day");
+    }else{
+        count++;
     }
     
     if(MONTH > 12 || MONTH <= 0){
         addErrorConfigs(1, "month");
+    }else{
+        count++;
     }
     
     if(YEAR > currentYear || YEAR <= 1900){
         addErrorConfigs(2, "year (>1900)");
+    }else{
+        count++;
     }
+
+    return count === INPUTS.length;
 }
 
 function addErrorConfigs(index, message) {
