@@ -125,6 +125,7 @@ input:focus::placeholder {
     color: red;
     margin-top: 2px;
     font-size: 0.6rem;
+    font-style: italic;
 }
 
 @media (max-width: 660px){

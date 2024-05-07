@@ -13,12 +13,12 @@ function showResults(){
     
 
     if(areThoseFilled(INPUTS,LABELS,FILL_MESSAGE)){
-        areThoseValid(DAY,MONTH,YEAR)
+        areThoseValid(DAY,MONTH,YEAR, INPUTS, LABELS, FILL_MESSAGE)
     }
     
 }
 
-function areThoseFilled(inputs, labels, fillMessage) {
+function areThoseFilled(inputs, labels, fillMessage){
 
     var count = 0;
 
@@ -43,16 +43,25 @@ function areThoseFilled(inputs, labels, fillMessage) {
     }
 }
 
-function areThoseValid(day, month, year){
+function areThoseValid(day, month, year, inputs, labels, fillMessage){
     
     var currentYear = new Date().getFullYear;
 
-
-    if(day <= 0 || day >=31 || month <= 0 || month>12 || year<1900 || year>= currentYear){
-        alert('fuck');
+    if(day <= 0 || day >31 ){
+        addErrorConfigs(inputs, labels, fillMessage, 0, "day");
+    }else{
     }
 }
 
-function error(inputs, labels, fillMessage){
-
+function addErrorConfigs(inputs, labels, fillSpan, index, message) {
+    inputs[index].classList.add('wrong-border');
+    labels[index].classList.add('wrong');
+    fillSpan[index].textContent = "Please select a valid " + message + ".";
 }
+
+function removeErrorConfigs(inputs, labels, fillSpan,index){
+    inputs[index].classList.remove('wrong-border');
+    labels[index].classList.remove('wrong');
+    fillSpan[index].textContent = "";
+}
+
