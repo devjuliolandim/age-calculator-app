@@ -5,7 +5,7 @@ const FILL_MESSAGE = Array.from(document.querySelectorAll('.fill-forget'));
 function showResults(){
 
     if(areThoseFilled() && areThoseValid()){
-        alert('ok');
+        
     }
     
 }
@@ -52,7 +52,9 @@ function areThoseValid(){
         count++;
     }
     
-    if(YEAR > currentYear || YEAR <= 1900){
+    if(YEAR > currentYear){
+        addErrorConfigs(2, "year");
+    }else if(YEAR <= 1900){
         addErrorConfigs(2, "year (>1900)");
     }else{
         count++;
