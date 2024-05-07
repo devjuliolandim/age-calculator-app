@@ -1,67 +1,67 @@
+const INPUTS = Array.from(document.querySelectorAll('input'));
+const LABELS = Array.from(document.querySelectorAll('.input-upper-text'));
+const FILL_MESSAGE = Array.from(document.querySelectorAll('.fill-forget'));
+
 function showResults(){
-    
-    const DAY = document.querySelector("#day").value;
-    const MONTH = document.querySelector("#month").value;
-    const YEAR = document.querySelector("#year").value;
 
-    const INPUTS = Array.from(document.querySelectorAll('input'));
-    const LABELS = Array.from(document.querySelectorAll('.input-upper-text'));
-    const FILL_MESSAGE = Array.from(document.querySelectorAll('.fill-forget'));
-
-    
-
-    
-
-    if(areThoseFilled(INPUTS,LABELS,FILL_MESSAGE)){
-        areThoseValid(DAY,MONTH,YEAR, INPUTS, LABELS, FILL_MESSAGE)
+    if(areThoseFilled()){
+        areThoseValid();
     }
     
 }
 
-function areThoseFilled(inputs, labels, fillMessage){
+function areThoseFilled(){
 
     var count = 0;
 
-    for (var i = 0; i < inputs.length; i++) {
-        if (inputs[i].value === '') {
-            inputs[i].classList.add('wrong-border');
-            labels[i].classList.add('wrong');
-            fillMessage[i].textContent = "Don't forget to fill this info";
+    for (var i = 0; i < INPUTS.length; i++) {
+        if (INPUTS[i].value === '') {
+            INPUTS[i].classList.add('wrong-border');
+            LABELS[i].classList.add('wrong');
+            FILL_MESSAGE[i].textContent = "Don't forget to fill this info";
            
         } else {
-            inputs[i].classList.remove('wrong-border');
-            labels[i].classList.remove('wrong');
-            fillMessage[i].textContent = ""; 
+            INPUTS[i].classList.remove('wrong-border');
+            LABELS[i].classList.remove('wrong');
+            FILL_MESSAGE[i].textContent = ""; 
             count++;
         }
     }
 
-    if(count == inputs.length){
-        return true;
-    }else{
-        return false;
-    }
+    return count === INPUTS.length;
 }
 
-function areThoseValid(day, month, year, inputs, labels, fillMessage){
+function areThoseValid(){
     
+    const DAY = parseInt(document.querySelector("#day").value);
+    const MONTH = parseInt(document.querySelector("#month").value);
+    const YEAR = parseInt(document.querySelector("#year").value);
+
+
     var currentYear = new Date().getFullYear;
 
-    if(day <= 0 || day >31 ){
-        addErrorConfigs(inputs, labels, fillMessage, 0, "day");
-    }else{
+    if(DAY <= 0 || DAY >31 ){
+        addErrorConfigs(0, "day");
+    }
+    
+    if(MONTH > 12 || MONTH <= 0){
+        addErrorConfigs(1, "month");
+    }
+    
+    if(YEAR > currentYear || YEAR <= 1900){
+        addErrorConfigs(2, "year (>1900)");
     }
 }
 
-function addErrorConfigs(inputs, labels, fillSpan, index, message) {
-    inputs[index].classList.add('wrong-border');
-    labels[index].classList.add('wrong');
-    fillSpan[index].textContent = "Please select a valid " + message + ".";
+function addErrorConfigs(index, message) {
+    INPUTS[index].classList.add('wrong-border');
+    LABELS[index].classList.add('wrong');
+    FILL_MESSAGE[index].textContent = "Please select a valid " + message + ".";
 }
 
-function removeErrorConfigs(inputs, labels, fillSpan,index){
-    inputs[index].classList.remove('wrong-border');
-    labels[index].classList.remove('wrong');
-    fillSpan[index].textContent = "";
+function removeErrorConfigs(index){
+    INPUTS[index].classList.remove('wrong-border');
+    LABELS[index].classList.remove('wrong');
+    FILL_MESSAGE[index].textContent = "";
 }
 
