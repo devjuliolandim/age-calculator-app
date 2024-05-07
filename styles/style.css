@@ -111,3 +111,20 @@ input:focus::placeholder {
     border-radius: 50%;
     display: inline-block;
 }
+
+
+@media (max-width: 660px){
+
+    main{
+        width: 400px;
+    }
+
+    input{
+        width: 90px;
+    }
+
+    .data{
+        gap: 20px;
+        justify-content: center;
+    }
+}
