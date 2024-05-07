@@ -2,16 +2,24 @@ const INPUTS = Array.from(document.querySelectorAll('input'));
 const LABELS = Array.from(document.querySelectorAll('.input-upper-text'));
 const FILL_MESSAGE = Array.from(document.querySelectorAll('.fill-forget'));
 
-let DAY, MONTH, YEAR;
+let DAY, MONTH, YEAR, currentYear;
 
 function showResults(){
 
     DAY = parseInt(document.querySelector("#day").value);
     MONTH = parseInt(document.querySelector("#month").value);
     YEAR = parseInt(document.querySelector("#year").value);
+    currentYear = new Date().getFullYear();
 
     if(areThoseFilled() && areThoseValid()){
-        
+            var yearDiference = currentYear - YEAR;
+            var totalMonth = yearDiference % 12;
+            var totalDays = yearDiference % 30;
+
+            document.querySelector("#years-result").innerHTML = yearDiference;
+            document.querySelector("#months-result").innerHTML = totalMonth;
+            document.querySelector("#days-result").innerHTML = totalDays;
+
     }
     
 }
@@ -38,7 +46,6 @@ function areThoseFilled(){
 }
 
 function areThoseValid(){
-    var currentYear = new Date().getFullYear();
     var count = 0;
 
     if(DAY <= 0 || DAY >31 ){
