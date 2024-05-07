@@ -120,6 +120,13 @@ input:focus::placeholder {
     color: red;
 }
 
+.fill-forget{
+    display: block;
+    color: red;
+    margin-top: 2px;
+    font-size: 0.6rem;
+}
+
 @media (max-width: 660px){
 
     main{
@@ -139,5 +146,29 @@ input:focus::placeholder {
     li{
         font-size: 4rem;
         margin-left: 30px;
+    }
+}
+
+
+@media (max-width: 400px){
+    main{
+        width: 350px;
+    }
+
+
+    .data{
+        gap: 20px;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    li{
+        font-size: 3.5rem;
+        margin-left: 30px;
+    }
+
+    svg{
+        width: 41px;
+        height: 41px;
     }
 }
