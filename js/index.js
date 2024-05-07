@@ -2,7 +2,13 @@ const INPUTS = Array.from(document.querySelectorAll('input'));
 const LABELS = Array.from(document.querySelectorAll('.input-upper-text'));
 const FILL_MESSAGE = Array.from(document.querySelectorAll('.fill-forget'));
 
+let DAY, MONTH, YEAR;
+
 function showResults(){
+
+    DAY = parseInt(document.querySelector("#day").value);
+    MONTH = parseInt(document.querySelector("#month").value);
+    YEAR = parseInt(document.querySelector("#year").value);
 
     if(areThoseFilled() && areThoseValid()){
         
@@ -32,11 +38,6 @@ function areThoseFilled(){
 }
 
 function areThoseValid(){
-    
-    const DAY = parseInt(document.querySelector("#day").value);
-    const MONTH = parseInt(document.querySelector("#month").value);
-    const YEAR = parseInt(document.querySelector("#year").value);
-
     var currentYear = new Date().getFullYear();
     var count = 0;
 
